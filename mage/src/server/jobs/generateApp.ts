@@ -1,7 +1,7 @@
+import { GenerateAppJob } from "wasp/server/jobs";
 import { spawn } from "child_process";
 import { Mutex } from "async-mutex";
 import { log } from "./utils.js";
-import { GenerateAppJob } from "@wasp/jobs/generateAppJob.js";
 
 const appGenerationResults: Record<string, any> = {};
 

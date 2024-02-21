@@ -1,5 +1,4 @@
-import { GetUserFieldsFn } from "@wasp/types";
-
+// TODO: Removed `GetUserFieldsFn` from "@wasp/types" import because it is deprecated and has no clear alternative. Please check migration instructions in Wasp docs on how to manually migrate the code that was using it.
 export const getGoogleUserFields: GetUserFieldsFn = async (_context, args) => {
   return {
     email: args.profile.emails[0].value,
