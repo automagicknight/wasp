@@ -19,9 +19,13 @@ async function createSocialLoginMigration(
     },
   });
 
+  let numAlreadyMigratedUsers = 0;
+  let numUsersMissingProvider = 0;
+  let numMigratedUsers = 0;
   for (const user of users) {
     if (user.auth) {
-      console.log("User was already migrated, skipping", user);
+      console.log("User was already migrated, skipping", user.id);
+      numAlreadyMigratedUsers++;
       continue;
     }
 
@@ -30,7 +34,8 @@ async function createSocialLoginMigration(
     );
 
     if (!provider) {
-      console.log(`Missing ${providerName} provider, skipping user`, user);
+      console.log(`Missing ${providerName} provider, skipping user`, user.id);
+      numUsersMissingProvider++;
       continue;
     }
 
@@ -50,5 +55,12 @@ async function createSocialLoginMigration(
         },
       },
     });
+    console.log(`Migrated user`, user.id);
+    numMigratedUsers++;
   }
+
+  console.log('=============================');
+  console.log('Num already migrated users: ', numAlreadyMigratedUsers);
+  console.log('Num users missing provider: ', numUsersMissingProvider);
+  console.log('Num migrated users: ', numMigratedUsers);
 }
