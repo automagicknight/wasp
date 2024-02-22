@@ -18,7 +18,11 @@ app waspAi {
     rootComponent: import { RootComponent } from "@src/client/RootComponent.jsx",
   },
   db: {
-    system: PostgreSQL
+    system: PostgreSQL,
+    seeds: [
+      import { migrateGoogleAuth } from "@src/migrateToNewAuth.ts",
+      import { migrateGitHubAuth } from "@src/migrateToNewAuth.ts",
+    ]
   },
   auth: {
     userEntity: User,
@@ -26,11 +30,11 @@ app waspAi {
     methods: {
       gitHub: {
         configFn: import { getGitHubAuthConfig } from "@src/server/auth.js",
-        getUserFieldsFn: import { getGitHubUserFields } from "@src/server/auth.js",
+        userSignupFields: import { gitHubUserSignupFields } from "@src/server/auth.ts",
       },
       google: {
         configFn: import { getGoogleAuthConfig } from "@src/server/auth.js",
-        getUserFieldsFn: import { getGoogleUserFields } from "@src/server/auth.js",
+        userSignupFields: import { googleUserSignupFields } from "@src/server/auth.ts",
       },
     },
     onAuthFailedRedirectTo: "/",

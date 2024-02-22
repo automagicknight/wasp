@@ -1,10 +1,9 @@
-// TODO: Removed `GetUserFieldsFn` from "@wasp/types" import because it is deprecated and has no clear alternative. Please check migration instructions in Wasp docs on how to manually migrate the code that was using it.
-export const getGoogleUserFields: GetUserFieldsFn = async (_context, args) => {
-  return {
-    email: args.profile.emails[0].value,
-    username: args.profile.emails[0].value,
-  };
-};
+import { defineUserSignupFields } from 'wasp/server/auth'
+
+export const googleUserSignupFields = defineUserSignupFields({
+  email: async (data) => (data.profile as any)?.emails?.[0]?.value,
+  username: async (data) => (data.profile as any)?.emails?.[0]?.value,
+});
 
 export const getGoogleAuthConfig = () => {
   return {
@@ -14,14 +13,12 @@ export const getGoogleAuthConfig = () => {
   };
 };
 
-
-export const getGitHubUserFields: GetUserFieldsFn = async (_context, args) => {
-  // NOTE: if we don't want to access users' emails, we can use scope ["user:read"]
-  // instead of ["user"] and access args.profile.username instead
-  const username = args.profile.username;
-  const email = args.profile.emails[0].value;
-  return { email, username };
-};
+// NOTE: if we don't want to access users' emails, we can use scope ["user:read"]
+// instead of ["user"] and access data.profile.username instead
+export const gitHubUserSignupFields = defineUserSignupFields({
+  email: async (data) => (data.profile as any)?.username,
+  username: async (data) => (data.profile as any)?.emails?.[0]?.value,
+})
 
 export function getGitHubAuthConfig() {
   return {
