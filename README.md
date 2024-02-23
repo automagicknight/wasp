@@ -1,133 +1,45 @@
-<p align=center>
-  <img height="80px" src="https://user-images.githubusercontent.com/1536647/77317442-78625700-6d0b-11ea-9822-0fb21e557e87.png"/>
-</p>
-<p align=center>
-  The fastest way to develop full-stack web apps with React & Node.js.
-</p>
-<br>
-<p align=center>
-  <a href="https://github.com/wasp-lang/wasp/blob/main/LICENSE"><img alt="license" src="https://img.shields.io/github/license/wasp-lang/wasp"></a>
-  <a href="https://github.com/wasp-lang/wasp/releases/latest"><img alt="latest release" src="https://img.shields.io/github/v/release/wasp-lang/wasp"/></a>
-  <a href="https://discord.gg/rzdnErX"><img alt="discord" src="https://img.shields.io/discord/686873244791210014?label=chat%20@%20discord"/></a>
-</p>
+## Welcome to your new SaaS App! 🎉
+<a href="https://www.producthunt.com/posts/open-saas?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-open&#0045;saas" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=436467&theme=light" alt="Open&#0032;SaaS - Open&#0045;source&#0032;&#0038;&#0032;100&#0037;&#0032;free&#0032;React&#0032;&#0038;&#0032;Node&#0046;js&#0032;SaaS&#0032;starter&#0033; | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 
-------
+https://github.com/wasp-lang/open-saas/assets/70215737/5ff289b1-12b9-4b46-aa90-a6a3122de93e
 
-<p align="center">
-  <a href="https://wasp-lang.dev">Web page</a> | <a href="https://wasp-lang.dev/docs">Docs</a>
-</p>
+You've decided to build a SaaS app with the Open SaaS template. Great choice! 
 
-<br>
+This template is:
 
-Wasp (**W**eb **A**pplication **Sp**ecification) is a Rails-like framework for React, Node.js, and Prisma.  
-Build your app in a day and deploy it with a single CLI command!
+1. fully open-source
+2. completely free to use and distribute
+3. comes with a ton of features out of the box!
+4. focused on free, open-source services, where possible
 
-### Why is Wasp awesome
-- 🚀 **Quick start**: Due to its expressiveness, you can create and deploy a production-ready web app from scratch with very few lines of concise, consistent, declarative code.
-- 😌 **No boilerplate**: By abstracting away complex full-stack features, there is less boilerplate code. That means less code to maintain and understand! It also means easier upgrades.
-- 🔓 **No lock-in**: You can deploy the Wasp app anywhere you like. There is no lock-in into specific providers; you have full control over the code (and can actually check it out in .wasp/ dir if you are interested ).
+🧑‍💻 Check it out in action here: [OpenSaaS.sh](https://opensaas.sh)  
+📚 Check out the Docs here: [Open SaaS Docs](https://docs.opensaas.sh)
 
-### Features
- 🔒 Full-stack Auth, 🖇️ RPC (Client <-> Server), 🚀 Simple Deployment, ⚙ ️Jobs, ✉️ Email Sending, 🛟 Full-stack Type Safety, ...
+## What's inside?
 
-### Code example
+The template itself is built on top of some very powerful tools and frameworks, including:
 
-Simple Wasp config file in which you describe the high-level details of your web app:
-```js
-// file: main.wasp
+- 🐝 [Wasp](https://wasp-lang.dev) - a full-stack React, NodeJS, Prisma framework with superpowers
+- 🚀 [Astro](https://starlight.astro.build/) - Astro's lightweight "Starlight" template for documentation and blog
+- 💸 [Stripe](https://stripe.com) - for products and payments
+- 📈 [Plausible](https://plausible.io) or [Google](https://analytics.google.com/) Analytics
+- 🤖 [OpenAI](https://openai.com) - OpenAI API integrated into the app or [Replicate](https://replicate.com/) (coming soon 👀)
+- 📦 [AWS S3](https://aws.amazon.com/s3/) - for file uploads
+- 📧 [SendGrid](https://sendgrid.com), [MailGun](https://mailgun.com), or SMTP - for email sending
+- 💅 [TailwindCSS](https://tailwindcss.com) - for styling
+- 🧑‍💼 [TailAdmin](https://tailadmin.com/) - admin dashboard & components for TailwindCSS
 
-app todoApp {
-  title: "ToDo App",  // visible in the browser tab
-  wasp: { version: "^0.11.0" },
-  auth: { // full-stack auth out-of-the-box
-    userEntity: User, methods: { email: {...} }
-  }
-}
+Because we're using Wasp as the full-stack framework, we can leverage a lot of its features to build our SaaS in record time, including:
 
-route RootRoute { path: "/", to: MainPage }
-page MainPage {
-  authRequired: true, // Limit access to logged-in users.
-  component: import Main from "@client/Main.tsx" // Your React code.
-}
+- 🔐 [Full-stack Authentication](https://wasp-lang.dev/docs/auth/overview) - Email verified + social Auth in a few lines of code.
+- ⛑ [End-to-end Type Safety](https://wasp-lang.dev/docs/data-model/operations/overview) - Type your backend functions and get inferred types on the front-end automatically, without the need to install or configure any third-party libraries. Oh, and type-safe Links, too!
+- 🤖 [Jobs](https://wasp-lang.dev/docs/language/features#jobs) - Run cron jobs in the background or set up queues simply by defining a function in the config file.
+- 🚀 [One-command Deploy](https://wasp-lang.dev/docs/advanced/deployment/overview) - Easily deploy via the CLI to [Fly.io](https://fly.io), or to other providers like [Railway](https://railway.app) and [Netlify](https://netlify.com).
 
-query getTasks {
-  fn: import { getTasks } from "@server/tasks.js", // Your Node.js code.
-  entities: [Task] // Automatic cache invalidation.
-}
+You also get access to Wasp's diverse, helpful community if you get stuck or need help.
+- 🤝 [Wasp Discord](https://discord.gg/aCamt5wCpS)
 
-entity Task {=psl  // Your Prisma data model.
-    id          Int     @id @default(autoincrement())
-    description String
-    isDone      Boolean @default(false)
-psl=}
-```
 
-The rest of the code you write in React / Node.js / Prisma and just reference it from the .wasp file.
+Note that we've tried to get as many of the core features of a SaaS app into this template as possible, but there still might be some missing features or functionality.
 
-:arrow_forward: Check out [TodoApp example](/examples/tutorials/TodoApp) for the complete code example. :arrow_backward:
-
-### How it works
-
-<img width="800px" src="https://user-images.githubusercontent.com/1536647/231472285-126679e5-ecce-4cbb-8579-eb3cd9ba95bf.png"/>
-
-Given a simple .wasp configuration file that describes the high-level details of your web app, and .js(x)/.css/..., source files with your unique logic, Wasp compiler generates the full source of your web app in the target stack: front-end, back-end and deployment.
-
-This unique approach is what makes Wasp "smart" and gives it its superpowers!
-
-For more information about Wasp, check [**docs**](https://wasp-lang.dev/docs).
-
-# Get started
-
-Run
-```
-curl -sSL https://get.wasp-lang.dev/installer.sh | sh
-```
-to install Wasp on OSX/Linux/WSL(Win). From there, just follow the instructions to run your first app in less than a minute!
-
-For more details, check out [the docs](https://wasp-lang.dev/docs).
-
-# Wasp AI / Mage
-
-Wasp comes with experimental AI code generator to help you kickstart your next Wasp project -> you can use it via `wasp new` in the CLI (choose "AI" option) if you can provide your OpenAI keys or you can do it via our [Mage web app](https://usemage.ai) in which case our OpenAI keys are used in the background.
-
-# This repository
-
-This is the main repo of the Wasp universe, containing core code (mostly `waspc` - Wasp compiler) and the supporting materials.
-
-# Project status
-
-Currently, Wasp is in beta, with most features flushed out and working well.
-However, there are still a lot of improvements and additions that we have in mind for the future, and we are working on them constantly, so you can expect a lot of changes and improvements in the future.
-
-While the idea is to support multiple web tech stacks in the future, right now, we are focusing on the specific stack: React + react-query, NodeJS + ExpressJS, and Prisma.
-
-# Contributing
-
-Any way you want to contribute is a good way :)!
-
-The best place to start is to check out [waspc/](waspc/), where you can find detailed steps for first-time contributors + technical details about the Wasp compiler.
-
-The core of Wasp is built in Haskell, but there are also a lot of non-Haskell parts of Wasp, so you will certainly be able to find something for you!
-
-Even if you don't plan to submit any code, just joining the discussion on discord [![Discord](https://img.shields.io/discord/686873244791210014?label=chat%20on%20discord)](https://discord.gg/rzdnErX) and giving your feedback is already great and helps a lot (motivates us and helps us figure out how to shape Wasp)!
-
-You can also:
- - :star: Star this repo to show your interest/support.
- - :mailbox: Stay updated by subscribing to our [email list](https://wasp-lang.dev#signup).
- - :speech_balloon: Join the discussion at https://github.com/wasp-lang/wasp/discussions .
-
-# Careers
-
-Check our [careers](https://wasp-lang.notion.site/Wasp-Careers-59fd1682c80d446f92be5fa65cc17672) page for a list of currently opened positions!
-
-# Sponsors
-
-<a href="https://github.com/michelwaechter"><img src="https://github.com/michelwaechter.png" width="50px" alt="michelwaechter" /></a> - Our first sponsor ever! Thanks so much, Michel ❤️ , from the whole Wasp Team, for bravely going where nobody has been before :)!
-
-<a href="https://github.com/shayneczyzewski"><img src="https://github.com/shayneczyzewski.png" width="50px" alt="shayneczyzewski" /></a> - Thanks Shayne, for all the contributions you did so far and for your continuous support!
-
-<a href="https://github.com/MarianoMiguel"><img src="https://github.com/MarianoMiguel.png" width="50px" alt="MarianoMiguel" /></a> - Big thanks Mariano for being one of our first sponsors and believing in us ❤️!
-
-<a href="https://github.com/Tech4Money"><img src="https://github.com/Tech4Money.png" width="50px" alt="Tech4Money" /></a> - Thanks Mike ❤️ for supporting us so early on our journey!
-
-<a href="https://github.com/haseeb-heaven"><img src="https://github.com/haseeb-heaven.png" width="50px" alt="haseeb-heaven" /></a> - We are thankful for your support Heaven in this early stage of Wasp :)!
+We could always use some help tying up loose ends, so consider [contributing](https://github.com/wasp-lang/open-saas/blob/main/CONTRIBUTING.md)!

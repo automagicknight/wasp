@@ -1,12 +1,6 @@
-.dir-locals.el
-# Local Netlify folder
-.netlify
-
-# editor related
-.idea/
-*.swo
-*.swp
-
-# macOS related
+*/.wasp/
+*/.env.server
+*/.env.client
+*/.DS_Store
 .DS_Store
-.vscode/
+*/migrations
